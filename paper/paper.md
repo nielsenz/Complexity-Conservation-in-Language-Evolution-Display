@@ -94,7 +94,7 @@ Given the historical nature of the data and necessarily small sample sizes typic
 - **Bootstrap confidence intervals** (n=1000) for robust uncertainty estimation
 - **Cohen's d effect sizes** for magnitude assessment
 
-Statistical significance was set at α = 0.05. Multiple comparisons were controlled with Bonferroni correction (α = 0.017); key findings remain significant after correction. Effect sizes were not calculated for comparisons where one group showed zero variance, as this yields undefined or infinite values. All analyses were conducted in Python using SciPy (version 1.9+).
+Statistical significance was set at alpha = 0.05. Multiple comparisons were controlled with Bonferroni correction (alpha = 0.017); key findings remain significant after correction. Effect sizes were not calculated for comparisons where one group showed zero variance, as this yields undefined or infinite values. All analyses were conducted in Python using SciPy (version 1.9+).
 
 ## 4. Results
 
@@ -209,7 +209,7 @@ This study demonstrates computational methods for testing complexity conservatio
 
 **Sample Size Constraints**: Historical text availability necessarily limits sample sizes (n=4-7 per period), affecting statistical power and generalizability. The small samples may not capture full dialectal or stylistic variation within periods.
 
-**Statistical Considerations**: Multiple comparisons were controlled with Bonferroni correction (α = 0.017); key findings remain significant after correction. Small sample sizes limit power; replication with larger corpora is needed.
+**Statistical Considerations**: Multiple comparisons were controlled with Bonferroni correction (alpha = 0.017); key findings remain significant after correction. Small sample sizes limit power; replication with larger corpora is needed.
 
 **Genre and Register Effects**: Text types vary across periods (literary, legal, chronicle), potentially confounding complexity measures with stylistic differences. Systematic genre controls would strengthen comparisons.
 
@@ -263,7 +263,7 @@ Medieval Latin shows high variance with a documented outlier (Gregory of Tours; 
 
 ### A.4 Medieval Latin Model Limitations
 
-The Stanza Latin model (ITTB-trained) underdetects transitional analytical forms in Medieval Latin, producing structural zeros. Inference is therefore restricted to Classical↔Spanish for the categorical test.
+The Stanza Latin model (ITTB-trained) underdetects transitional analytical forms in Medieval Latin, producing structural zeros. Inference is therefore restricted to Classical vs. Spanish for the categorical test.
 
 ### A.5 Reproducibility Metadata
 
