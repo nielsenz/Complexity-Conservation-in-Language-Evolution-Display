@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17363668.svg)](https://doi.org/10.5281/zenodo.17363668)
+
 # Latin–Spanish Complexity Display (Distribution)
 
 This directory is the distributable artifact bundle for the paper “Complexity Conservation in Language Evolution: Quantitative Evidence from Latin to Spanish”. It contains the generated figures/tables, processed data, minimal code to regenerate displays, and conversion instructions for building the manuscript.

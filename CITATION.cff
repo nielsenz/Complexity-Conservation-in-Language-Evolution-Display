@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this bundle, please cite it as below."
 title: "Complexity Conservation in Language Evolution — Latin–Spanish Display Bundle"
-version: "display-v0.1.0"
+version: "display-v0.1.1"
 date-released: "2025-10-15"
 authors:
   - family-names: "Nielsen"
@@ -12,14 +12,14 @@ identifiers:
   - type: repository
     value: "https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution-Display"
 # Add DOI here after Zenodo minting, e.g.:
-# doi: 10.5281/zenodo.xxxxxxx
+doi: 10.5281/zenodo.17363668
 preferred-citation:
   type: software
   title: "Complexity Conservation in Language Evolution — Latin–Spanish Display Bundle"
   authors:
     - family-names: "Nielsen"
       given-names: "Zach"
-  version: "display-v0.1.0"
+  version: "display-v0.1.1"
   date-released: "2025-10-15"
   url: "https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution-Display"
 

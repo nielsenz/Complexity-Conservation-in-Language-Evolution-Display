@@ -298,6 +298,6 @@ Trudgill, P. (2011). *Sociolinguistic Typology: Social Determinants of Linguisti
 ---
 
 *Corresponding author: Zach Nielsen (zachnielsen@hey.com)*  
-*Data availability: Code and analysis — https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution; Display bundle — https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution-Display*
+*Data availability: Code and analysis — https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution; Display bundle — https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution-Display (DOI: https://doi.org/10.5281/zenodo.17363668)*
 
 ---
