@@ -1,0 +1,26 @@
+{
+  "title": "Complexity Conservation in Language Evolution — Latin–Spanish Display Bundle",
+  "creators": [
+    { "name": "Nielsen, Zach" }
+  ],
+  "description": "Distribution bundle for the Latin→Spanish complexity conservation study. Includes generated figures and tables, processed results (stanza_output.json), manuscript PDF/HTML, and build instructions (Pandoc/XeLaTeX). See the main repository for full analysis code.",
+  "access_right": "open",
+  "upload_type": "software",
+  "keywords": [
+    "historical linguistics",
+    "complexity conservation",
+    "Latin",
+    "Spanish",
+    "NLP",
+    "Stanza",
+    "corpus linguistics"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
+
