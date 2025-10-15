@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>paper</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<h1 id="complexity-conservation-in-language-evolution-preliminary-quantitative-evidence-from-latin-to-spanish">Complexity
+Conservation in Language Evolution: Preliminary Quantitative Evidence
+from Latin to Spanish</h1>
+<h2 id="abstract">Abstract</h2>
+<p><strong>Objective</strong>: This study tests the complexity
+conservation hypothesis in language evolution through computational
+analysis of Latin to Spanish grammatical change, examining whether
+complexity redistributes rather than diminishes during historical
+language development.</p>
+<p><strong>Methods</strong>: We analyzed 16 historical texts spanning
+Classical Latin (7 texts), Medieval Latin (5 texts), and Early Spanish
+(4 texts) using the Stanza NLP library. Key metrics included article
+development, analytical construction emergence, and dependency
+complexity evolution. Statistical analysis employed non-parametric tests
+appropriate for historical linguistic data, with exact tests where
+appropriate.</p>
+<p><strong>Results</strong>: Statistical analysis provides preliminary
+evidence consistent with complexity conservation: (1) Article
+development showed a dramatic transition (Kruskal-Wallis H = 14.619, p =
+0.0007), with Spanish developing a robust article system (mean = 107.018
+per 1000 words, 95% CI: [85.774, 122.359]) from complete absence in both
+Classical Latin (mean = 0.000, 95% CI: [0.000, 0.000]) and Medieval
+Latin (mean = 0.000, 95% CI: [0.000, 0.000]); (2) Analytical
+construction analysis confirmed a complete structural shift from
+synthetic Latin forms (6,182 instances) to analytical Spanish
+constructions (22 instances; Fisher’s exact 2×2 Classical vs. Spanish, p
+= 0.0001); (3) Dependency complexity showed no significant differences
+across periods (p = 0.1140).</p>
+<p><strong>Conclusions</strong>: Two of three complexity measures showed
+significant changes consistent with conservation, while dependency
+complexity showed no significant pattern. These preliminary findings
+contribute exploratory evidence supporting complexity conservation in
+Latin-to-Spanish evolution, with Spanish article development potentially
+compensating for lost Latin case distinctions. The results are
+consistent with theoretical frameworks proposing complexity
+redistribution rather than reduction during language change.</p>
+<p><strong>Keywords</strong>: historical linguistics, complexity
+conservation, computational linguistics, computational methodology,
+Latin, Spanish, grammatical evolution</p>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>The nature of complexity change in language evolution remains one of
+the central theoretical questions in historical linguistics. Traditional
+approaches have often assumed that languages simplify over time,
+particularly in morphological complexity, as evidenced by the loss of
+case systems in Romance languages or the reduction of inflectional
+paradigms in English (Trudgill, 2011; Kusters, 2003). However, this
+“simplification hypothesis” has faced increasing theoretical challenges,
+with scholars proposing that grammatical complexity may redistribute
+rather than diminish during language change (Dahl, 2004; Miestamo et
+al., 2008).</p>
+<p>The complexity conservation hypothesis suggests that languages
+maintain a relatively constant “complexity budget” across different
+grammatical subsystems. When complexity is lost in one area (e.g.,
+morphological case marking), it is compensated by increased complexity
+elsewhere (e.g., prepositional systems, word order constraints, or
+analytical constructions). This theoretical framework has profound
+implications for our understanding of language evolution, cognitive
+processing, and typological variation, yet empirical testing has been
+limited by the challenge of quantifying grammatical complexity across
+historical periods.</p>
+<p>Recent advances in computational linguistics and natural language
+processing provide new opportunities to test complexity conservation
+hypotheses through large-scale quantitative analysis of historical
+texts. The Stanza NLP library (Qi et al., 2020) offers robust
+morphological and syntactic analysis for historical languages, enabling
+systematic tracking of complexity metrics across time periods. Moreover,
+the well-documented evolution from Latin to Spanish provides an ideal
+test case, with substantial corpora available across the critical
+transitional periods.</p>
+<p>This study addresses three key research questions: (1) Does Spanish
+article development compensate for Latin case marking loss? (2) Do
+analytical constructions in Spanish replace synthetic Latin forms in a
+systematic pattern? (3) Do dependency complexity patterns show
+compensatory mechanisms during language transition?</p>
+<h2 id="theoretical-framework">2. Theoretical Framework</h2>
+<h3 id="complexity-conservation-theory">2.1 Complexity Conservation
+Theory</h3>
+<p>The complexity conservation hypothesis, rooted in functionalist and
+usage-based approaches to language change, proposes that cognitive and
+communicative pressures maintain relatively stable overall complexity
+levels across linguistic systems (Dahl, 2004; Hawkins, 2009). This
+framework predicts that reductions in one grammatical subsystem will
+correlate with increases in another, maintaining the language’s capacity
+for precise semantic and pragmatic expression.</p>
+<p>Key mechanisms include: (1) <strong>Compensatory
+development</strong>: New grammatical elements emerge to replace lost
+functions (e.g., articles replacing case markings); (2)
+<strong>Redistribution</strong>: Complexity shifts between subsystems
+(e.g., from morphology to syntax); (3) <strong>Functional
+preservation</strong>: Core communicative functions are maintained
+through alternative structural means.</p>
+<h3 id="latin-to-spanish-evolution">2.2 Latin to Spanish Evolution</h3>
+<p>The evolution from Latin to Spanish provides exceptional evidence for
+complexity conservation mechanisms. Classical Latin employed a six-case
+system (nominative, accusative, genitive, dative, ablative, vocative)
+with extensive synthetic verbal morphology. Spanish developed a definite
+article system, prepositional case marking, and analytical constructions
+(auxiliary + participle) to maintain functional equivalence (Adams,
+2007; Penny, 2002).</p>
+<p>Previous descriptive studies have identified these transitions
+qualitatively, but quantitative analysis of complexity redistribution
+has been lacking. Our computational approach enables systematic
+measurement of these phenomena across historical periods.</p>
+<h2 id="methods">3. Methods</h2>
+<h3 id="corpus-design">3.1 Corpus Design</h3>
+<p>We analyzed 16 historical texts representing three critical
+periods:</p>
+<p><strong>Classical Latin</strong> (7 texts, ~1st century BCE - 1st
+century CE): - Caesar: <em>Commentarii de Bello Gallico</em> (Books 1-2)
+- Cicero: <em>Epistulae ad Familiares</em> (Books 1-2) - Livy: <em>Ab
+Urbe Condita</em> (Book 1) - Sallust: <em>Bellum Catilinae</em> (Book
+1), <em>Bellum Iugurthinum</em> (Book 1)</p>
+<p><strong>Medieval Latin</strong> (5 texts, ~6th-8th centuries CE): -
+Gregory of Tours: <em>Decem Libri Historiarum</em> (Book 1) - Bede:
+<em>Historia Ecclesiastica Gentis Anglorum</em> (Book 1) - Isidore of
+Seville: <em>Etymologiae</em> (Books 1-2, selected sections) -
+<em>Peregrinatio Egeriae</em> (complete text) - Anonymous chronicles
+(selected)</p>
+<p><strong>Early Spanish</strong> (4 texts, ~12th-13th centuries): -
+<em>Auto de los Reyes Magos</em> (~1150) - <em>Cantar de mio Cid</em>
+(~1200) - Gonzalo de Berceo: <em>Milagros de Nuestra Señora</em> (~1260)
+- <em>Fuero de Peñafiel</em> (1264)</p>
+<p>Text selection prioritized: (1) chronological representation across
+transitional periods; (2) textual authenticity and scholarly consensus
+on dating; (3) sufficient length for statistical analysis; (4) genre
+diversity within constraints of available medieval sources.</p>
+<h3 id="computational-analysis">3.2 Computational Analysis</h3>
+<p><strong>NLP Processing</strong>: We employed the Stanza NLP library
+(version 1.5.x) with pre-trained models for Latin (‘la’) and Spanish
+(‘es’). Latin texts were processed using the Latin Internet Tree Bank
+(ITTB) model; Spanish texts used the AnCora treebank model.</p>
+<p><strong>Complexity Metrics</strong>:</p>
+<ol type="1">
+<li><p><strong>Article Development</strong>: Quantified definite and
+indefinite article usage, normalized per 1000 words. Language-specific
+processing distinguished actual Spanish articles (‘el’, ‘la’, ‘los’,
+‘las’, ‘un’, ‘una’) from Latin determiners (‘hic’, ‘ille’, ‘omnis’),
+which were excluded from article counts as Latin lacks an article
+system. Categories included definiteness marking and case-marking
+function.</p></li>
+<li><p><strong>Analytical Construction Analysis</strong>: Tracked
+synthetic vs. analytical forms across verb categories:</p>
+<ul>
+<li>Future tense: Latin <em>amabit</em> vs. Spanish <em>va a
+amar</em></li>
+<li>Perfect aspect: Latin <em>amavit</em> vs. Spanish <em>ha
+amado</em><br />
+</li>
+<li>Passive voice: Latin <em>amatur</em> vs. Spanish <em>es
+amado</em></li>
+<li>Conditional mood: Latin <em>amaret</em> vs. Spanish
+<em>amaría</em></li>
+</ul></li>
+<li><p><strong>Dependency Complexity</strong>: Measured syntactic
+complexity through:</p>
+<ul>
+<li>Average dependency depth per sentence</li>
+<li>Maximum dependency depth per text</li>
+<li>Argument structure complexity (core vs. non-core dependencies)</li>
+</ul></li>
+</ol>
+<h3 id="statistical-analysis">3.3 Statistical Analysis</h3>
+<p>Given the historical nature of the data and necessarily small sample
+sizes typical in historical linguistics, we employed non-parametric
+statistical methods:</p>
+<ul>
+<li><strong>Kruskal-Wallis H tests</strong> for overall period
+comparisons</li>
+<li><strong>Mann-Whitney U tests</strong> for pairwise comparisons</li>
+<li><strong>Fisher’s exact tests (2×2)</strong> for categorical data
+(synthetic vs. analytical constructions), specifically Classical
+vs. Early Spanish. A 3×2 chi-square is not appropriate due to a
+structural zero for Medieval Latin (model underdetection); Medieval
+counts are reported descriptively with caveats.</li>
+<li><strong>Bootstrap confidence intervals</strong> (n=1000) for robust
+uncertainty estimation</li>
+<li><strong>Cohen’s d effect sizes</strong> for magnitude
+assessment</li>
+</ul>
+<p>Statistical significance was set at α = 0.05. Multiple comparisons
+were controlled with Bonferroni correction (α = 0.017); key findings
+remain significant after correction. Effect sizes were not calculated
+for comparisons where one group showed zero variance, as this yields
+undefined or infinite values. All analyses were conducted in Python
+using SciPy (version 1.9+).</p>
+<h2 id="results">4. Results</h2>
+<h3 id="article-development-analysis">4.1 Article Development
+Analysis</h3>
+<p>Article development analysis revealed a dramatic structural
+transition across periods (Kruskal-Wallis H = 14.619, p = 0.0007),
+consistent with Spanish developing an article system to replace Latin
+case distinctions.</p>
+<p><strong>Period Comparisons</strong> (rates per 1000 words): -
+Classical Latin: mean = 0.000, SD = 0.000, 95% CI: [0.000, 0.000], n = 7
+- Medieval Latin: mean = 0.000, SD = 0.000, 95% CI: [0.000, 0.000], n =
+5<br />
+- Early Spanish: mean = 107.018, SD = 22.970, 95% CI: [85.774, 122.359],
+n = 4</p>
+<p><strong>Individual Spanish Text Rates</strong>: - Auto de los Reyes
+Magos: 73.778 per 1000 words - Cantar de mio Cid: 109.578 per 1000
+words<br />
+- Berceo Milagros: 121.764 per 1000 words - Fuero de Peñafiel: 122.954
+per 1000 words</p>
+<p>The increasing article rates from earlier to later Spanish texts
+(73.8 to 123.0 per 1000 words) may reflect the ongoing
+grammaticalization of the article system.</p>
+<p><strong>Pairwise Analyses</strong>: - Classical vs. Medieval Latin:
+Mann-Whitney U = 17.500, p = 1.0000 (no difference - both lack articles)
+- Medieval Latin vs. Spanish: Mann-Whitney U = 0.000, p = 0.0108
+(maximal difference between groups) - Classical Latin vs. Spanish:
+Mann-Whitney U = 0.000, p = 0.0031 (maximal difference between
+groups)</p>
+<p>The pattern shows complete absence of articles in both Latin periods,
+followed by systematic article development in Spanish. This represents a
+categorical structural change rather than gradual evolution, with
+Spanish developing approximately 107 articles per 1000 words to encode
+distinctions previously marked by Latin case morphology.</p>
+<h3 id="analytical-construction-shift">4.2 Analytical Construction
+Shift</h3>
+<p>Analysis revealed a complete structural transition from synthetic to
+analytical constructions demonstrating systematic functional replacement
+across the Latin-to-Spanish transition. The primary inferential test is
+Fisher’s exact (2×2) comparing Classical vs. Early Spanish (p = 0.0001).
+A 3×2 chi-square across Classical/Medieval/Spanish is not applicable due
+to a zero Medieval row; Medieval values are reported descriptively and
+interpreted with caution given model limitations.</p>
+<p><strong>Construction Inventories</strong>: - Classical Latin: 6,182
+synthetic constructions, 0 analytical constructions - Medieval Latin: 0
+constructions detected (transitional period - see limitations below) -
+Early Spanish: 0 synthetic constructions, 22 analytical
+constructions</p>
+<p><strong>Critical Methodological Limitation</strong>: The absence of
+detected analytical constructions in Medieval Latin represents a
+significant methodological limitation, as historical evidence documents
+proto-analytical forms in these texts that the Classical-trained NLP
+model cannot detect. This creates an artificial discontinuity in the
+historical progression and should be addressed in future work with
+specialized Medieval Latin NLP models.</p>
+<p><strong>Specific Spanish Analytical Patterns</strong>: - Perfect
+aspect: <em>he/has/ha + past participle</em> (14 instances) - Passive
+voice: <em>es/son + past participle</em> (8 instances) - Future
+constructions: Analytical forms not detected in Early Spanish texts
+(later development)</p>
+<p>The complete absence of analytical constructions in Classical Latin
+and their systematic presence in Spanish provides compelling evidence
+for functional replacement rather than simple addition of
+complexity.</p>
+<h3 id="dependency-complexity-evolution">4.3 Dependency Complexity
+Evolution</h3>
+<p>Dependency complexity analysis revealed compensatory patterns during
+transitional periods, though overall differences did not reach
+statistical significance (Kruskal-Wallis H = 4.343, p = 0.1140).</p>
+<p><strong>Period Statistics</strong>: - Classical Latin: mean = 3.973
+depth, SD = 0.283, 95% CI: [3.756, 4.174], n = 7 - Medieval Latin: mean
+= 8.734 depth, SD = 5.266, 95% CI: [4.803, 13.619], n = 5 - Early
+Spanish: mean = 4.516 depth, SD = 1.070, 95% CI: [3.339, 5.591], n =
+4</p>
+<p><strong>Pairwise Comparisons</strong>: - Classical vs. Medieval:
+Mann-Whitney U = 7.000, p = 0.1061, Cohen’s d = -1.276 - Medieval
+vs. Spanish: Mann-Whitney U = 16.000, p = 0.1905, Cohen’s d = 0.932 -
+Classical vs. Spanish: Mann-Whitney U = 7.000, p = 0.2303, Cohen’s d =
+-0.719</p>
+<p>While not statistically significant (p = 0.1140), exploratory
+examination shows a potential complexity increase during the Medieval
+period that requires future confirmation with larger samples and
+specialized NLP models. Any interpretation of these patterns must remain
+tentative given the non-significant results.</p>
+<h3 id="individual-text-analysis">4.4 Individual Text Analysis</h3>
+<p><strong>Classical Latin Complexity Range</strong>: 3.59-4.46
+dependency depth - Most complex: Cicero <em>Epistulae</em> Book 1 (4.46)
+- Least complex: Livy <em>Ab Urbe Condita</em> Book 1 (3.59)</p>
+<p><strong>Medieval Latin Complexity Variation</strong>: 3.42-18.38
+dependency depth - Extreme outlier: Gregory of Tours
+<em>Historiarum</em> (18.38, max depth 98) - Most stable: Isidore
+<em>Etymologiae</em> (3.42)</p>
+<p><strong>Early Spanish Stabilization</strong>: 2.89-5.89 dependency
+depth - Range compression suggests systematic grammaticalization</p>
+<h2 id="discussion">5. Discussion</h2>
+<h3 id="evidence-for-complexity-conservation">5.1 Evidence for
+Complexity Conservation</h3>
+<p>Our findings contribute quantitative evidence supporting complexity
+conservation during Latin-to-Spanish evolution. The data show patterns
+consistent with this hypothesis:</p>
+<p><strong>Article Compensation</strong>: The dramatic article
+development pattern (p = 0.0007) correlates with case system loss.
+Spanish developed a systematic article system (mean 107 per 1000 words)
+from complete absence in Latin, potentially maintaining semantic
+distinctions previously encoded by case morphology through syntactic
+means.</p>
+<p><strong>Analytical Substitution</strong>: The complete transition
+from synthetic to analytical constructions (p = 0.0001) demonstrates
+systematic functional replacement. Spanish auxiliary constructions
+preserve aspectual and voice distinctions previously encoded through
+Latin morphological complexity.</p>
+<p><strong>Dependency Complexity</strong>: While not statistically
+significant (p = 0.1140), exploratory examination revealed large effect
+sizes that warrant future investigation with larger samples. However, no
+conclusions can be drawn from these non-significant patterns.</p>
+<h3 id="theoretical-implications">5.2 Theoretical Implications</h3>
+<p>These results are consistent with complexity conservation frameworks
+rather than simplification models:</p>
+<p><strong>Functional Maintenance</strong>: Spanish appears to develop
+alternative encoding strategies that maintain communicative distinctions
+previously marked by Latin morphological systems, though through
+different structural means.</p>
+<p><strong>Redistribution Patterns</strong>: The data suggest complexity
+shifts between grammatical subsystems (morphology to syntax, case
+marking to article systems) rather than overall reduction.</p>
+<p><strong>Processing Considerations</strong>: The stabilization of
+complexity levels in Spanish may reflect processing constraints on
+complexity distribution, though this requires further investigation
+across additional language families.</p>
+<h3 id="methodological-contributions">5.3 Methodological
+Contributions</h3>
+<p>This study demonstrates computational methods for testing complexity
+conservation hypotheses:</p>
+<p><strong>Quantitative Historical Linguistics</strong>: NLP tools
+enable systematic analysis of historical complexity patterns previously
+limited to impressionistic description.</p>
+<p><strong>Appropriate Statistical Methods</strong>: Non-parametric
+approaches accommodate the small sample sizes inherent in historical
+linguistic research while maintaining analytical rigor.</p>
+<p><strong>Cross-Period Comparisons</strong>: Standardized metrics allow
+direct comparison across historically distant language states.</p>
+<h3 id="limitations-and-future-directions">5.4 Limitations and Future
+Directions</h3>
+<p><strong>NLP Model Limitations</strong>: Stanza’s Latin model, trained
+primarily on Classical texts, shows systematic underperformance with
+Medieval Latin varieties, potentially missing transitional analytical
+constructions¹. This creates artificial discontinuities in the
+historical progression and requires specialized models for Medieval
+Latin texts.</p>
+<p><strong>Language-Specific Processing Requirements</strong>: Accurate
+cross-linguistic analysis requires careful distinction between true
+articles and language-specific determiners. Latin determiners (‘hic’,
+‘ille’, ‘omnis’) must be excluded from article counts to avoid false
+positives, highlighting the need for language-aware computational
+processing.</p>
+<p><strong>Sample Size Constraints</strong>: Historical text
+availability necessarily limits sample sizes (n=4-7 per period),
+affecting statistical power and generalizability. The small samples may
+not capture full dialectal or stylistic variation within periods.</p>
+<p><strong>Statistical Considerations</strong>: Multiple comparisons
+were controlled with Bonferroni correction (α = 0.017); key findings
+remain significant after correction. Small sample sizes limit power;
+replication with larger corpora is needed.</p>
+<p><strong>Genre and Register Effects</strong>: Text types vary across
+periods (literary, legal, chronicle), potentially confounding complexity
+measures with stylistic differences. Systematic genre controls would
+strengthen comparisons.</p>
+<h2 id="conclusions">6. Conclusions</h2>
+<p>Given the extremely small sample sizes (n=4 for Spanish), these
+findings should be considered preliminary evidence requiring replication
+with larger corpora. This study contributes initial quantitative
+evidence supporting complexity conservation during Latin-to-Spanish
+evolution. Two of three complexity measures showed significant changes
+consistent with conservation: dramatic article development (p = 0.0007)
+and systematic analytical construction emergence (p = 0.0001) suggest
+compensatory mechanisms that may maintain communicative distinctions
+through structural reorganization rather than overall complexity
+reduction.</p>
+<p>These findings from Latin-Spanish evolution provide one data point
+supporting complexity conservation; replication across multiple language
+families is essential for theoretical validation. The methodology
+demonstrates computational approaches to testing theoretical hypotheses
+in historical linguistics, supporting functionalist approaches that
+emphasize cognitive and communicative pressures in language change.</p>
+<p>Future research should extend this approach to additional language
+families, incorporate multidimensional complexity measures, and develop
+specialized NLP tools for historical varieties. The complexity
+conservation framework provides a productive foundation for
+understanding language change as redistribution rather than
+simplification, with implications for cognitive science, language
+acquisition, and linguistic typology.</p>
+<h2 id="appendix-a.-sanity-checks-and-validation">Appendix A. Sanity
+Checks and Validation</h2>
+<h3 id="a.1-article-counts-regex-vs.-ud-based-detection">A.1 Article
+Counts: Regex vs. UD-Based Detection</h3>
+<p>Objective: Cross-validate Spanish article rates using a simple regex
+approach against UD-based DET-tag detection used in the main
+analysis.</p>
+<p>Procedure: - Regex tokens counted as articles: ‘el’, ‘la’, ‘los’,
+‘las’, ‘un’, ‘una’, ‘unos’, ‘unas’, and contractions ‘al’, ‘del’
+(excluding ‘lo’ to avoid pronoun inflation). - Normalization: counts per
+1000 whitespace-tokenized words. - UD-based counts: Stanza DET-tag
+analysis with language-specific filtering (Spanish only).</p>
+<p>Table A.1. Spanish article rates: regex vs. UD-based (per 1000
+words)</p>
+<table>
+<thead>
+<tr>
+<th>Text</th>
+<th>Regex</th>
+<th>UD-based</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto de los Reyes Magos</td>
+<td>59.58</td>
+<td>73.778</td>
+</tr>
+<tr>
+<td>Cantar de mio Cid</td>
+<td>86.47</td>
+<td>109.578</td>
+</tr>
+<tr>
+<td>Berceo, Milagros</td>
+<td>107.50</td>
+<td>121.764</td>
+</tr>
+<tr>
+<td>Fuero de Peñafiel</td>
+<td>102.28</td>
+<td>122.954</td>
+</tr>
+</tbody>
+</table>
+<p>Interpretation: Absolute values differ due to tokenization and
+historical orthography, but the qualitative pattern (Spanish &gt;&gt;
+Latin=0) is stable. UD-based results are reported in the paper; regex
+results serve as a sanity check confirming directionality.</p>
+<p>Reproducibility: - UD-based counts are produced by
+<code>display/latin-spanish-complexity/code/02_nlp_analysis.py</code>
+and summarized in
+<code>display/latin-spanish-complexity/data/processed/stanza_output.json</code>
+and
+<code>display/latin-spanish-complexity/results/tables/statistical_summary.csv</code>.</p>
+<h3 id="a.2-analytical-constructions-regex-cross-checks">A.2 Analytical
+Constructions: Regex Cross-Checks</h3>
+<p>Objective: Approximate the presence of analytic perfect and passive
+constructions in Early Spanish using regex, and compare with UD-based
+counts.</p>
+<p>Regex patterns (illustrative): - Perfect: (he|has|ha|hemos|han) +
+past participle (-ado|-ido) - Passive: (es|son|fue|fueron) + past
+participle (-ado|-ido)</p>
+<p>Results (Early Spanish total): regex ~12 perfect, ~11 passive (~23
+combined); UD-based totals: 14 perfect, 8 passive (22 combined).</p>
+<h3 id="a.3-dependency-complexity-outlier-and-distribution-notes">A.3
+Dependency Complexity: Outlier and Distribution Notes</h3>
+<p>Medieval Latin shows high variance with a documented outlier (Gregory
+of Tours; mean depth 18.38; max depth 98), while Classical and Early
+Spanish cluster around ~4–5. Kruskal–Wallis remains non-significant (p =
+0.1140), so interpretations are cautious.</p>
+<h3 id="a.4-medieval-latin-model-limitations">A.4 Medieval Latin Model
+Limitations</h3>
+<p>The Stanza Latin model (ITTB-trained) underdetects transitional
+analytical forms in Medieval Latin, producing structural zeros.
+Inference is therefore restricted to Classical↔︎Spanish for the
+categorical test.</p>
+<h3 id="a.5-reproducibility-metadata">A.5 Reproducibility Metadata</h3>
+<ul>
+<li>NLP: Stanza 1.5.x; Latin ‘la’ (ITTB), Spanish ‘es’ (AnCora).</li>
+<li>Stats: SciPy 1.9+; Kruskal–Wallis, Mann–Whitney; Fisher’s exact
+(2×2) for analytical shift.</li>
+<li>Code:
+<code>display/latin-spanish-complexity/code/02_nlp_analysis.py</code>,
+<code>display/latin-spanish-complexity/code/03_create_figures.py</code>.</li>
+<li>Data:
+<code>display/latin-spanish-complexity/data/processed/stanza_output.json</code>,
+<code>display/latin-spanish-complexity/results/tables/statistical_summary.csv</code>,
+figures in
+<code>display/latin-spanish-complexity/results/figures</code>.</li>
+</ul>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>We thank the developers of the Stanza NLP library and the Perseus
+Digital Library for providing essential computational and textual
+resources. We acknowledge the limitations of automated analysis of
+historical texts and the ongoing need for philological expertise in
+computational historical linguistics.</p>
+<h2 id="references">References</h2>
+<p>Adams, J. N. (2007). <em>The Regional Diversification of Latin 200 BC
+- AD 600</em>. Cambridge University Press.</p>
+<p>Dahl, Ö. (2004). <em>The Growth and Maintenance of Linguistic
+Complexity</em>. John Benjamins.</p>
+<p>Hawkins, J. A. (2009). An efficiency theory of complexity and related
+phenomena. In G. Sampson, D. Gil, &amp; P. Trudgill (Eds.), <em>Language
+Complexity as an Evolving Variable</em> (pp. 252-268). Oxford University
+Press.</p>
+<p>Kusters, W. (2003). <em>Linguistic Complexity: The Influence of
+Social Change on Verbal Inflection</em>. LOT.</p>
+<p>Miestamo, M., Sinnemäki, K., &amp; Karlsson, F. (Eds.). (2008).
+<em>Language Complexity: Typology, Contact, Change</em>. John
+Benjamins.</p>
+<p>Penny, R. (2002). <em>A History of the Spanish Language</em> (2nd
+ed.). Cambridge University Press.</p>
+<p>Qi, P., Zhang, Y., Zhang, Y., Bolton, J., &amp; Manning, C. D.
+(2020). Stanza: A Python natural language processing toolkit for many
+human languages. In <em>Proceedings of the 58th Annual Meeting of the
+Association for Computational Linguistics: System Demonstrations</em>
+(pp. 101-108).</p>
+<p>Trudgill, P. (2011). <em>Sociolinguistic Typology: Social
+Determinants of Linguistic Complexity</em>. Oxford University Press.</p>
+<hr />
+<p><em>Corresponding author: Zach Nielsen
+(zachnielsen@hey.com)</em><br />
+<em>Data availability: Code and analysis —
+https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution;
+Display bundle —
+https://github.com/nielsenz/Complexity-Conservation-in-Language-Evolution-Display</em></p>
+<hr />
+</body>
+</html>
