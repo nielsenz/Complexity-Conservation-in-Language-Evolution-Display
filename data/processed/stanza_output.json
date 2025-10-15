@@ -1,0 +1,231 @@
+{
+  "analysis_metadata": {
+    "analysis_date": "2024-08-07",
+    "stanza_version": "1.5+",
+    "latin_model": "la",
+    "spanish_model": "es", 
+    "total_texts_analyzed": 16,
+    "periods": ["Classical Latin", "Medieval Latin", "Early Spanish"]
+  },
+  
+  "corpus_summary": {
+    "classical_latin": {
+      "text_count": 7,
+      "texts": [
+        "caesar_bg_1", "caesar_bg_2", "cicero_letters_book_1", 
+        "cicero_letters_2", "livy_book_1", "sallust_bellium_catilinae", 
+        "sallust_bellum_iugurthinum"
+      ]
+    },
+    "medieval_latin": {
+      "text_count": 5,
+      "texts": [
+        "bede_liber_primus", "greg-tours-liber-historium", 
+        "isidore1", "liber1", "peregrinatio"
+      ]
+    },
+    "early_spanish": {
+      "text_count": 4,
+      "texts": [
+        "auto_reyes_magos", "berceo_milagros", "cid", "fuero_de_penafiel"
+      ]
+    }
+  },
+
+  "article_development_results": {
+    "classical_latin": {
+      "mean_per_1000_words": 0.000,
+      "std_deviation": 0.000,
+      "confidence_interval_95": [0.000, 0.000],
+      "individual_rates": [0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000],
+      "total_articles": 0,
+      "article_types": {
+        "definite": 0,
+        "indefinite": 0
+      }
+    },
+    "medieval_latin": {
+      "mean_per_1000_words": 0.000,
+      "std_deviation": 0.000, 
+      "confidence_interval_95": [0.000, 0.000],
+      "individual_rates": [0.000, 0.000, 0.000, 0.000, 0.000],
+      "total_articles": 0,
+      "article_types": {
+        "definite": 0,
+        "indefinite": 0
+      }
+    },
+    "early_spanish": {
+      "mean_per_1000_words": 107.018,
+      "std_deviation": 22.970,
+      "confidence_interval_95": [85.774, 122.359],
+      "individual_rates": [73.778, 109.578, 121.764, 122.954],
+      "total_articles": 555,
+      "article_types": {
+        "definite": 445,
+        "indefinite": 110
+      }
+    },
+    "statistical_test": {
+      "test_name": "Kruskal-Wallis H",
+      "h_statistic": 14.619,
+      "p_value": 0.0007,
+      "significance_level": 0.05,
+      "significant": true,
+      "bonferroni_corrected_alpha": 0.017,
+      "significant_after_correction": true
+    }
+  },
+
+  "analytical_construction_results": {
+    "classical_latin": {
+      "synthetic_constructions": 6182,
+      "analytical_constructions": 0,
+      "construction_types": {
+        "future_tense": {"synthetic": 1835, "analytical": 0},
+        "perfect_tense": {"synthetic": 4347, "analytical": 0},
+        "passive_voice": {"synthetic": 0, "analytical": 0},
+        "conditional": {"synthetic": 0, "analytical": 0}
+      }
+    },
+    "medieval_latin": {
+      "synthetic_constructions": 0,
+      "analytical_constructions": 0,
+      "note": "NLP model limitations - transitional forms not detected",
+      "construction_types": {
+        "future_tense": {"synthetic": 0, "analytical": 0},
+        "perfect_tense": {"synthetic": 0, "analytical": 0},
+        "passive_voice": {"synthetic": 0, "analytical": 0},
+        "conditional": {"synthetic": 0, "analytical": 0}
+      }
+    },
+    "early_spanish": {
+      "synthetic_constructions": 0,
+      "analytical_constructions": 22,
+      "construction_types": {
+        "future_tense": {"synthetic": 0, "analytical": 0},
+        "perfect_tense": {"synthetic": 0, "analytical": 14},
+        "passive_voice": {"synthetic": 0, "analytical": 8},
+        "conditional": {"synthetic": 0, "analytical": 0}
+      }
+    },
+    "statistical_test": {
+      "test_name": "Fisher's Exact Test",
+      "odds_ratio": 0.0000,
+      "p_value": 0.0001,
+      "significance_level": 0.05,
+      "significant": true,
+      "contingency_table": [
+        [6182, 0],
+        [0, 0], 
+        [0, 22]
+      ]
+    }
+  },
+
+  "dependency_complexity_results": {
+    "classical_latin": {
+      "mean_depth": 3.973,
+      "std_deviation": 0.283,
+      "confidence_interval_95": [3.756, 4.174],
+      "individual_depths": [3.59, 4.46, 4.12, 3.89, 3.76, 4.21, 3.78]
+    },
+    "medieval_latin": {
+      "mean_depth": 8.734,
+      "std_deviation": 5.266,
+      "confidence_interval_95": [4.803, 13.619],
+      "individual_depths": [3.42, 18.38, 6.45, 7.89, 7.53],
+      "note": "Extreme outlier: Gregory of Tours (18.38, max depth 98)"
+    },
+    "early_spanish": {
+      "mean_depth": 4.516,
+      "std_deviation": 1.070,
+      "confidence_interval_95": [3.339, 5.591],
+      "individual_depths": [2.89, 5.89, 4.21, 5.03]
+    },
+    "statistical_test": {
+      "test_name": "Kruskal-Wallis H",
+      "h_statistic": 4.343,
+      "p_value": 0.1140,
+      "significance_level": 0.05,
+      "significant": false,
+      "note": "Patterns exploratory only - not statistically significant"
+    }
+  },
+
+  "pairwise_comparisons": {
+    "articles": {
+      "classical_vs_medieval": {
+        "mann_whitney_u": 17.500,
+        "p_value": 1.0000,
+        "significant": false,
+        "note": "Both groups have zero articles"
+      },
+      "medieval_vs_spanish": {
+        "mann_whitney_u": 0.000,
+        "p_value": 0.0108,
+        "significant": true,
+        "effect": "maximal_difference"
+      },
+      "classical_vs_spanish": {
+        "mann_whitney_u": 0.000,
+        "p_value": 0.0031,
+        "significant": true,
+        "effect": "maximal_difference"
+      }
+    },
+    "dependency_complexity": {
+      "classical_vs_medieval": {
+        "mann_whitney_u": 7.000,
+        "p_value": 0.1061,
+        "cohens_d": -1.276,
+        "significant": false
+      },
+      "medieval_vs_spanish": {
+        "mann_whitney_u": 16.000,
+        "p_value": 0.1905,
+        "cohens_d": 0.932,
+        "significant": false
+      },
+      "classical_vs_spanish": {
+        "mann_whitney_u": 7.000,
+        "p_value": 0.2303,
+        "cohens_d": -0.719,
+        "significant": false
+      }
+    }
+  },
+
+  "methodological_notes": {
+    "nlp_limitations": [
+      "Medieval Latin processing limited by Classical model training",
+      "Transitional analytical constructions may be underdetected",
+      "Language-specific article detection required for accuracy"
+    ],
+    "statistical_considerations": [
+      "Non-parametric methods used for small historical samples",
+      "Bootstrap confidence intervals (n=1000) for robust estimation",
+      "Multiple comparisons acknowledged in limitations"
+    ],
+    "sample_constraints": [
+      "Small sample sizes typical of historical linguistics",
+      "Text availability necessarily limits period representation",
+      "Genre variation controlled through careful text selection"
+    ]
+  },
+
+  "data_sources": {
+    "classical_latin": "Perseus Digital Library, Latin Library",
+    "medieval_latin": "Monumenta Germaniae Historica, Latin Library", 
+    "early_spanish": "Biblioteca Virtual Miguel de Cervantes, CORDE"
+  },
+
+  "processing_pipeline": [
+    "Text loading and preprocessing",
+    "Stanza NLP annotation (POS, dependency parsing)",
+    "Feature extraction (articles, constructions, complexity)",
+    "Statistical analysis (non-parametric tests)",
+    "Bootstrap confidence interval calculation",
+    "Result validation and reporting"
+  ]
+}

@@ -1,0 +1,6 @@
+Measure,Period,Value,Statistical_Test,P_Value,Significance
+Article Development,Classical Latin,0.000 ± 0.000,Kruskal-Wallis H = 14.619,0.0007,***
+Article Development,Medieval Latin,0.000 ± 0.000,Kruskal-Wallis H = 14.619,0.0007,***
+Article Development,Early Spanish,107.018 ± 22.970,Kruskal-Wallis H = 14.619,0.0007,***
+Construction Shift,Classical → Spanish,"6,182 → 22",Fisher's Exact Test,0.0001,***
+Dependency Complexity,All Periods,Non-significant,Kruskal-Wallis H = 4.343,0.1140,ns
