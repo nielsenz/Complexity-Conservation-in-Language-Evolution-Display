@@ -1,18 +1,10 @@
-# Complexity Conservation in Language Evolution: Preliminary Quantitative Evidence from Latin to Spanish
+# A Pilot Computational Test for Complexity Redistribution: Latin→Early Spanish Case Study
 
 ## Abstract
 
-**Objective**: This study tests the complexity conservation hypothesis in language evolution through computational analysis of Latin to Spanish grammatical change, examining whether complexity redistributes rather than diminishes during historical language development.
+We present a pilot computational method to test whether grammatical complexity redistributes across subsystems during language change. We analyze 16 texts spanning Classical/Medieval Latin and Early Spanish (n=7/5/4) with Stanza-based pipelines and non‑parametric statistics. Two metrics vary strongly by period—Spanish article rates rise from 0 to approximately 107 per 1,000 words and analytic auxiliaries replace Latin synthetic forms—while dependency‑depth differences are not statistically significant (Kruskal–Wallis p=0.114). A known modeling limitation under‑detects Medieval Latin analytic forms, creating a discontinuity that precludes full evolutionary claims. We position our results as method validation rather than hypothesis confirmation, and we outline requirements for a definitive study (specialized Medieval models; >=20 texts/period; genre controls). Code and data are provided for replication.
 
-**Methods**: We analyzed 16 historical texts spanning Classical Latin (7 texts), Medieval Latin (5 texts), and Early Spanish (4 texts) using the Stanza NLP library. Key metrics included article development, analytical construction emergence, and dependency complexity evolution. Statistical analysis employed non-parametric tests appropriate for historical linguistic data, with exact tests where appropriate.
-
-**Results**: Statistical analysis provides preliminary evidence consistent with complexity conservation: (1) Article development showed a dramatic transition (Kruskal-Wallis H = 14.619, p = 0.0007), with Spanish developing a robust article system (mean = 107.018 per 1000 words, 95% CI: [85.774, 122.359]) from complete absence in both Classical Latin (mean = 0.000, 95% CI: [0.000, 0.000]) and Medieval Latin (mean = 0.000, 95% CI: [0.000, 0.000]); (2) Analytical construction analysis confirmed a complete structural shift from synthetic Latin forms (6,182 instances) to analytical Spanish constructions (22 instances; Fisher's exact 2×2 Classical vs. Spanish, p = 0.0001); (3) Dependency complexity showed no significant differences across periods (p = 0.1140).
-
-**Conclusions**: Two of three complexity measures showed significant changes consistent with conservation, while dependency complexity showed no significant pattern. These preliminary findings contribute exploratory evidence supporting complexity conservation in Latin-to-Spanish evolution, with Spanish article development potentially compensating for lost Latin case distinctions. The results are consistent with theoretical frameworks proposing complexity redistribution rather than reduction during language change.
-
-**Keywords**: historical linguistics, complexity conservation, computational linguistics, computational methodology, Latin, Spanish, grammatical evolution
-
----
+**Keywords**: historical linguistics, complexity redistribution, computational linguistics, Latin, Spanish, grammatical evolution
 
 ## 1. Introduction
 
@@ -96,6 +88,11 @@ Given the historical nature of the data and necessarily small sample sizes typic
 
 Statistical significance was set at alpha = 0.05. Multiple comparisons were controlled with Bonferroni correction (alpha = 0.017); key findings remain significant after correction. Effect sizes were not calculated for comparisons where one group showed zero variance, as this yields undefined or infinite values. All analyses were conducted in Python using SciPy (version 1.9+).
 
+
+### 3.4 Data & Models: Known Failure Modes
+
+Stanza’s Latin model is trained primarily on Classical data and under‑detects transitional Medieval analytic forms. We therefore restrict inferential tests on the analytic shift to Classical vs. Early Spanish and treat Medieval counts as descriptive only. This known limitation produces a structural zero for the Medieval row in the construction table and motivates the future use of specialized Medieval models.
+
 ## 4. Results
 
 ### 4.1 Article Development Analysis
@@ -131,7 +128,6 @@ Analysis revealed a complete structural transition from synthetic to analytical 
 - Medieval Latin: 0 constructions detected (transitional period - see limitations below)
 - Early Spanish: 0 synthetic constructions, 22 analytical constructions
 
-**Critical Methodological Limitation**: The absence of detected analytical constructions in Medieval Latin represents a significant methodological limitation, as historical evidence documents proto-analytical forms in these texts that the Classical-trained NLP model cannot detect. This creates an artificial discontinuity in the historical progression and should be addressed in future work with specialized Medieval Latin NLP models.
 
 **Specific Spanish Analytical Patterns**:
 - Perfect aspect: *he/has/ha + past participle* (14 instances)
@@ -154,7 +150,7 @@ Dependency complexity analysis revealed compensatory patterns during transitiona
 - Medieval vs. Spanish: Mann-Whitney U = 16.000, p = 0.1905, Cohen's d = 0.932
 - Classical vs. Spanish: Mann-Whitney U = 7.000, p = 0.2303, Cohen's d = -0.719
 
-While not statistically significant (p = 0.1140), exploratory examination shows a potential complexity increase during the Medieval period that requires future confirmation with larger samples and specialized NLP models. Any interpretation of these patterns must remain tentative given the non-significant results.
+Dependency depth did not differ across periods (Kruskal–Wallis p = 0.114, n=7/5/4). We therefore refrain from further interpretation and treat these results as a power baseline for a larger study.
 
 ### 4.4 Individual Text Analysis
 
@@ -173,13 +169,13 @@ While not statistically significant (p = 0.1140), exploratory examination shows 
 
 ### 5.1 Evidence for Complexity Conservation
 
-Our findings contribute quantitative evidence supporting complexity conservation during Latin-to-Spanish evolution. The data show patterns consistent with this hypothesis:
+Our findings provide pilot signals consistent with complexity conservation during Latin-to-Spanish evolution. The data show patterns consistent with this hypothesis:
 
 **Article Compensation**: The dramatic article development pattern (p = 0.0007) correlates with case system loss. Spanish developed a systematic article system (mean 107 per 1000 words) from complete absence in Latin, potentially maintaining semantic distinctions previously encoded by case morphology through syntactic means.
 
 **Analytical Substitution**: The complete transition from synthetic to analytical constructions (p = 0.0001) demonstrates systematic functional replacement. Spanish auxiliary constructions preserve aspectual and voice distinctions previously encoded through Latin morphological complexity.
 
-**Dependency Complexity**: While not statistically significant (p = 0.1140), exploratory examination revealed large effect sizes that warrant future investigation with larger samples. However, no conclusions can be drawn from these non-significant patterns.
+**Dependency depth**: Did not differ across periods (Kruskal–Wallis p = 0.114, n=7/5/4). We treat this as a non‑result and a power baseline for future work.
 
 ### 5.2 Theoretical Implications
 
@@ -203,15 +199,12 @@ This study demonstrates computational methods for testing complexity conservatio
 
 ### 5.4 Limitations and Future Directions
 
-**NLP Model Limitations**: Stanza's Latin model, trained primarily on Classical texts, shows systematic underperformance with Medieval Latin varieties, potentially missing transitional analytical constructions¹. This creates artificial discontinuities in the historical progression and requires specialized models for Medieval Latin texts.
+This is a pilot with very small samples per period (n=7/5/4), so all inferences are power‑limited. Stanza’s Latin model, trained on Classical data, under‑detects transitional Medieval analytic forms; as a result, we restrict inferential tests of analytic shift to Classical vs. Early Spanish and treat Medieval counts descriptively. Genre/register imbalances may confound period contrasts; future work will add genre‑matched subsets and >=20 texts per period.
 
-**Language-Specific Processing Requirements**: Accurate cross-linguistic analysis requires careful distinction between true articles and language-specific determiners. Latin determiners ('hic', 'ille', 'omnis') must be excluded from article counts to avoid false positives, highlighting the need for language-aware computational processing.
-
-**Sample Size Constraints**: Historical text availability necessarily limits sample sizes (n=4-7 per period), affecting statistical power and generalizability. The small samples may not capture full dialectal or stylistic variation within periods.
-
-**Statistical Considerations**: Multiple comparisons were controlled with Bonferroni correction (alpha = 0.017); key findings remain significant after correction. Small sample sizes limit power; replication with larger corpora is needed.
-
-**Genre and Register Effects**: Text types vary across periods (literary, legal, chronicle), potentially confounding complexity measures with stylistic differences. Systematic genre controls would strengthen comparisons.
+Future work:
+- Specialized Medieval Latin tagger/lemmatizer; evaluate on held‑out medieval gold.
+- Corpus expansion to >=20 texts/period with genre controls; preregister dependency metrics.
+- Add morphosyntactic complexity indices beyond depth (argument optionality, subordination rates, information‑theoretic syntax surprisal).
 
 ## 6. Conclusions
 
@@ -267,11 +260,7 @@ The Stanza Latin model (ITTB-trained) underdetects transitional analytical forms
 
 ### A.5 Reproducibility Metadata
 
-- NLP: Stanza 1.5.x; Latin 'la' (ITTB), Spanish 'es' (AnCora).
-- Stats: SciPy 1.9+; Kruskal–Wallis, Mann–Whitney; Fisher’s exact (2×2) for analytical shift.
-- Code: `display/latin-spanish-complexity/code/02_nlp_analysis.py`, `display/latin-spanish-complexity/code/03_create_figures.py`.
-- Data: `display/latin-spanish-complexity/data/processed/stanza_output.json`, `display/latin-spanish-complexity/results/tables/statistical_summary.csv`, figures in `display/latin-spanish-complexity/results/figures`.
-
+With very small samples and a Medieval modeling gap, our results should be read as signals for a method, not as confirmation of complexity conservation. Two metrics show clear cross‑period differences, while dependency depth does not; taken together they motivate a larger, genre‑controlled study with dedicated Medieval Latin models. We release code and data to enable that next step and invite corpus contributions.
 
 ## Acknowledgments
 
