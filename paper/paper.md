@@ -59,11 +59,11 @@ Text selection prioritized: (1) chronological representation across transitional
 
 ### 3.2 Computational Analysis
 
-**NLP Processing**: We employed the Stanza NLP library (version 1.5.x) with pre-trained models for Latin ('la') and Spanish ('es'). Latin texts were processed using the Latin Internet Tree Bank (ITTB) model; Spanish texts used the AnCora treebank model.
+**NLP Processing**: We used Stanza 1.5.0 (Latin 'ittb', Spanish 'ancora'). Latin texts were processed with the Latin Index Thomisticus Treebank (ITTB) model; Spanish texts used the AnCora treebank model. SciPy 1.9.3 was used for statistical tests.
 
 **Complexity Metrics**:
 
-1. **Article Development**: Quantified definite and indefinite article usage, normalized per 1000 words. Language-specific processing distinguished actual Spanish articles ('el', 'la', 'los', 'las', 'un', 'una') from Latin determiners ('hic', 'ille', 'omnis'), which were excluded from article counts as Latin lacks an article system. Categories included definiteness marking and case-marking function.
+1. **Article Development**: Quantified definite and indefinite article usage, normalized per 1,000 words. Language-specific processing distinguished actual Spanish articles ('el', 'la', 'los', 'las', 'un', 'una') from Latin determiners ('hic', 'ille', 'omnis'), which were excluded from article counts as Latin lacks an article system. Categories included definiteness marking and case-marking function.
 
 2. **Analytical Construction Analysis**: Tracked synthetic vs. analytical forms across verb categories:
    - Future tense: Latin *amabit* vs. Spanish *va a amar*
@@ -86,7 +86,7 @@ Given the historical nature of the data and necessarily small sample sizes typic
 - **Bootstrap confidence intervals** (n=1000) for robust uncertainty estimation
 - Report medians with bootstrap BCa 95% CIs; effect sizes are not reported in this pilot due to small n and zero-variance cells
 
-Statistical significance was set at $\alpha = 0.05$. Multiple comparisons were controlled with Bonferroni correction ($\alpha_{adj} = 0.017$); key findings remain significant after correction. Effect sizes were not calculated for comparisons where one group showed zero variance, as this yields undefined or infinite values. All analyses were conducted in Python using SciPy (version 1.9+).
+Statistical significance was set at $\alpha = 0.05$. Multiple comparisons were controlled with Bonferroni correction ($\alpha_{adj} = 0.017$); key findings remain significant after correction. All analyses were conducted in Python using SciPy (version 1.9+).
 
 
 ### 3.4 Data & Models: Known Failure Modes
@@ -99,18 +99,18 @@ Stanza’s Latin model is trained primarily on Classical data and under‑detect
 
 Article development analysis revealed a dramatic structural transition across periods (Kruskal-Wallis H = 14.619, p = 0.0007), consistent with Spanish developing an article system to replace Latin case distinctions.
 
-**Summary** (median per 1000 words, IQR; BCa 95% CI; n):
+**Summary** (median per 1,000 words, IQR; BCa 95% CI; n):
 - Classical Latin: median 0.000 (IQR 0.000); CI [0.000, 0.000]; n = 7
 - Medieval Latin: median 0.000 (IQR 0.000); CI [0.000, 0.000]; n = 5
 - Early Spanish: median 115.7 (IQR 30.7); CI [85.774, 122.359]; n = 4
 
 **Individual Spanish Text Rates**:
-- Auto de los Reyes Magos: 73.778 per 1000 words
-- Cantar de mio Cid: 109.578 per 1000 words  
-- Berceo Milagros: 121.764 per 1000 words
-- Fuero de Peñafiel: 122.954 per 1000 words
+- Auto de los Reyes Magos: 73.778 per 1,000 words
+- Cantar de mio Cid: 109.578 per 1,000 words  
+- Berceo Milagros: 121.764 per 1,000 words
+- Fuero de Peñafiel: 122.954 per 1,000 words
 
-The increasing article rates from earlier to later Spanish texts (73.8 to 123.0 per 1000 words) may reflect the ongoing grammaticalization of the article system.
+The increasing article rates from earlier to later Spanish texts (73.8 to 123.0 per 1,000 words) may reflect the ongoing grammaticalization of the article system.
 
 **Pairwise Analyses**:
 - Classical vs. Medieval Latin: Mann-Whitney U = 17.500, p = 1.0000 (no difference - both lack articles)
@@ -118,7 +118,7 @@ The increasing article rates from earlier to later Spanish texts (73.8 to 123.0 
 - Classical Latin vs. Spanish: Mann-Whitney U = 0.000, p = 0.0031 (maximal difference between groups)
 Under Bonferroni adjustment for three pairwise tests ($\alpha_{adj} = 0.017$), Classical vs Spanish remains significant (p = 0.0031; p_adj = 0.0093), while Medieval vs Spanish does not (p = 0.0108; p_adj = 0.0324).
 
-The pattern shows complete absence of articles in both Latin periods, followed by systematic article development in Spanish. This represents a categorical structural change rather than gradual evolution, with Spanish developing a median ~116 articles per 1000 words (IQR ~31) to encode distinctions previously marked by Latin case morphology.
+The pattern shows complete absence of articles in both Latin periods, followed by systematic article development in Spanish. This represents a categorical structural change rather than gradual evolution, with Spanish developing a median ~116 articles per 1,000 words (IQR ~31) to encode distinctions previously marked by Latin case morphology.
 
 ### 4.2 Analytical Construction Shift
 
@@ -184,7 +184,7 @@ Dependency depth did not differ across periods (Kruskal–Wallis p = 0.114, n = 
 
 Our findings provide pilot signals consistent with complexity conservation during Latin-to-Spanish evolution. The data show patterns consistent with this hypothesis:
 
-**Article Compensation**: The dramatic article development pattern (p = 0.0007) correlates with case system loss. Spanish developed a systematic article system (median ~116 per 1000 words, IQR ~31) from complete absence in Latin, potentially maintaining semantic distinctions previously encoded by case morphology through syntactic means.
+**Article Compensation**: The dramatic article development pattern (p = 0.0007) correlates with case system loss. Spanish developed a systematic article system (median ~116 per 1,000 words, IQR ~31) from complete absence in Latin, potentially maintaining semantic distinctions previously encoded by case morphology through syntactic means.
 
 **Analytical Substitution**: A clear pilot signal of functional replacement (Fisher's exact 2×2, p = 0.0001). Spanish auxiliary constructions preserve aspectual and voice distinctions previously encoded through Latin morphological complexity.
 
