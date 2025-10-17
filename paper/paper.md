@@ -2,7 +2,7 @@
 
 ## Abstract
 
-We present a pilot computational method to test whether grammatical complexity redistributes across subsystems during language change. We analyze 16 texts spanning Classical/Medieval Latin and Early Spanish (n=7/5/4) with Stanza-based pipelines and non‑parametric statistics (medians + BCa CIs). Two metrics vary strongly by period—Spanish article rates rise from 0 to approximately 107 per 1,000 words and analytic auxiliaries replace Latin synthetic forms—while dependency‑depth differences are not statistically significant (Kruskal–Wallis p=0.114). A known modeling limitation under‑detects Medieval Latin analytic forms, creating a discontinuity that precludes full evolutionary claims. We position our results as method validation rather than hypothesis confirmation, and we outline requirements for a definitive study (specialized Medieval models; $\geq 20$ texts/period; genre controls). Code and data are provided for replication.
+We present a pilot computational method to test whether grammatical complexity redistributes across subsystems during language change. We analyze 16 texts spanning Classical/Medieval Latin and Early Spanish (n=7/5/4) with Stanza-based pipelines and non‑parametric statistics (medians + BCa CIs). Two metrics vary strongly by period—Spanish article rates rise from 0 to approximately 107 per 1,000 words and analytic auxiliaries replace Latin synthetic forms—while dependency‑depth differences are not statistically significant (Kruskal–Wallis p = 0.114). A known modeling limitation under‑detects Medieval Latin analytic forms, creating a discontinuity that precludes full evolutionary claims. We position our results as method validation rather than hypothesis confirmation, and we outline requirements for a definitive study (specialized Medieval models; $\geq 20$ texts/period; genre controls). Code and data are provided for replication.
 
 **Keywords**: historical linguistics, complexity redistribution, computational linguistics, Latin, Spanish, grammatical evolution
 
@@ -78,13 +78,13 @@ Text selection prioritized: (1) chronological representation across transitional
 
 ### 3.3 Statistical Analysis
 
-Given the historical nature of the data and necessarily small sample sizes typical in historical linguistics, we employed non-parametric statistical methods:
+Given the historical nature of the data and necessarily small sample sizes typical in historical linguistics, we employed non‑parametric statistical methods:
 
 - **Kruskal-Wallis H tests** for overall period comparisons
 - **Mann-Whitney U tests** for pairwise comparisons
 - **Fisher's exact tests (2×2)** for categorical data (synthetic vs. analytical constructions), specifically Classical vs. Early Spanish. A 3×2 chi-square is not appropriate due to a structural zero for Medieval Latin (model underdetection); Medieval counts are reported descriptively with caveats.
 - **Bootstrap confidence intervals** (n=1000) for robust uncertainty estimation
-- report medians with bootstrap BCa 95% CIs; effect sizes are not reported in this pilot due to small n and zero-variance cells
+- Report medians with bootstrap BCa 95% CIs; effect sizes are not reported in this pilot due to small n and zero-variance cells
 
 Statistical significance was set at $\alpha = 0.05$. Multiple comparisons were controlled with Bonferroni correction ($\alpha_{adj} = 0.017$); key findings remain significant after correction. Effect sizes were not calculated for comparisons where one group showed zero variance, as this yields undefined or infinite values. All analyses were conducted in Python using SciPy (version 1.9+).
 
@@ -118,7 +118,7 @@ The increasing article rates from earlier to later Spanish texts (73.8 to 123.0 
 - Classical Latin vs. Spanish: Mann-Whitney U = 0.000, p = 0.0031 (maximal difference between groups)
 Under Bonferroni adjustment for three pairwise tests ($\alpha_{adj} = 0.017$), Classical vs Spanish remains significant (p = 0.0031; p_adj = 0.0093), while Medieval vs Spanish does not (p = 0.0108; p_adj = 0.0324).
 
-The pattern shows complete absence of articles in both Latin periods, followed by systematic article development in Spanish. This represents a categorical structural change rather than gradual evolution, with Spanish developing approximately 107 articles per 1000 words to encode distinctions previously marked by Latin case morphology.
+The pattern shows complete absence of articles in both Latin periods, followed by systematic article development in Spanish. This represents a categorical structural change rather than gradual evolution, with Spanish developing a median ~116 articles per 1000 words (IQR ~31) to encode distinctions previously marked by Latin case morphology.
 
 ### 4.2 Analytical Construction Shift
 
@@ -151,12 +151,12 @@ The absence of analytical constructions in Classical Latin and their presence in
 
 ### 4.3 Dependency Complexity Evolution
 
-Dependency complexity analysis revealed compensatory patterns during transitional periods, though overall differences did not reach statistical significance (Kruskal-Wallis H = 4.343, p = 0.1140).
+Period patterns vary, but overall differences are not significant (Kruskal–Wallis H = 4.343, p = 0.114; n = 7/5/4).
 
-**Period Statistics**:
-- Classical Latin: mean = 3.973 depth, SD = 0.283, 95% CI: [3.756, 4.174], n = 7
-- Medieval Latin: mean = 8.734 depth, SD = 5.266, 95% CI: [4.803, 13.619], n = 5
-- Early Spanish: mean = 4.516 depth, SD = 1.070, 95% CI: [3.339, 5.591], n = 4
+**Summary (median depth, IQR; BCa 95% CI; n):**
+- Classical Latin: median 3.89 (IQR 0.40); CI [3.76, 4.21]; n = 7
+- Medieval Latin: median 7.53 (IQR 1.44); CI [3.42, 18.38]; n = 5
+- Early Spanish: median 4.62 (IQR 1.37); CI [2.89, 5.89]; n = 4
 
 **Pairwise Comparisons**:
 - Classical vs. Medieval: Mann-Whitney U = 7.000, p = 0.1061
@@ -184,11 +184,11 @@ Dependency depth did not differ across periods (Kruskal–Wallis p = 0.114, n = 
 
 Our findings provide pilot signals consistent with complexity conservation during Latin-to-Spanish evolution. The data show patterns consistent with this hypothesis:
 
-**Article Compensation**: The dramatic article development pattern (p = 0.0007) correlates with case system loss. Spanish developed a systematic article system (mean 107 per 1000 words) from complete absence in Latin, potentially maintaining semantic distinctions previously encoded by case morphology through syntactic means.
+**Article Compensation**: The dramatic article development pattern (p = 0.0007) correlates with case system loss. Spanish developed a systematic article system (median ~116 per 1000 words, IQR ~31) from complete absence in Latin, potentially maintaining semantic distinctions previously encoded by case morphology through syntactic means.
 
-**Analytical Substitution**: The complete transition from synthetic to analytical constructions (p = 0.0001) demonstrates systematic functional replacement. Spanish auxiliary constructions preserve aspectual and voice distinctions previously encoded through Latin morphological complexity.
+**Analytical Substitution**: A clear pilot signal of functional replacement (Fisher's exact 2×2, p = 0.0001). Spanish auxiliary constructions preserve aspectual and voice distinctions previously encoded through Latin morphological complexity.
 
-**Dependency depth**: Did not differ across periods (Kruskal–Wallis p = 0.114, n=7/5/4). We treat this as a non‑result and a power baseline for future work.
+**Dependency depth**: Did not differ across periods (Kruskal–Wallis p = 0.114, n = 7/5/4). We treat this as a non‑result and a power baseline for future work.
 
 ### 5.2 Theoretical Implications
 
