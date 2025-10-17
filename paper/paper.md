@@ -84,7 +84,7 @@ Given the historical nature of the data and necessarily small sample sizes typic
 - **Mann-Whitney U tests** for pairwise comparisons
 - **Fisher's exact tests (2×2)** for categorical data (synthetic vs. analytical constructions), specifically Classical vs. Early Spanish. A 3×2 chi-square is not appropriate due to a structural zero for Medieval Latin (model underdetection); Medieval counts are reported descriptively with caveats.
 - **Bootstrap confidence intervals** (n=1000) for robust uncertainty estimation
-- **Cohen's d effect sizes** for magnitude assessment
+- report medians with bootstrap BCa 95% CIs; effect sizes are not reported in this pilot due to small n and zero-variance cells
 
 Statistical significance was set at alpha = 0.05. Multiple comparisons were controlled with Bonferroni correction (alpha = 0.017); key findings remain significant after correction. Effect sizes were not calculated for comparisons where one group showed zero variance, as this yields undefined or infinite values. All analyses were conducted in Python using SciPy (version 1.9+).
 
@@ -116,12 +116,13 @@ The increasing article rates from earlier to later Spanish texts (73.8 to 123.0 
 - Classical vs. Medieval Latin: Mann-Whitney U = 17.500, p = 1.0000 (no difference - both lack articles)
 - Medieval Latin vs. Spanish: Mann-Whitney U = 0.000, p = 0.0108 (maximal difference between groups)
 - Classical Latin vs. Spanish: Mann-Whitney U = 0.000, p = 0.0031 (maximal difference between groups)
+Under Bonferroni adjustment for three pairwise tests (alpha_adj = 0.017), Classical vs Spanish (p = 0.0031; p_adj = 0.0093) and Medieval vs Spanish (p = 0.0108; p_adj = 0.0324) both remain significant.
 
 The pattern shows complete absence of articles in both Latin periods, followed by systematic article development in Spanish. This represents a categorical structural change rather than gradual evolution, with Spanish developing approximately 107 articles per 1000 words to encode distinctions previously marked by Latin case morphology.
 
 ### 4.2 Analytical Construction Shift
 
-Analysis revealed a complete structural transition from synthetic to analytical constructions demonstrating systematic functional replacement across the Latin-to-Spanish transition. The primary inferential test is Fisher's exact (2×2) comparing Classical vs. Early Spanish (p = 0.0001). A 3×2 chi-square across Classical/Medieval/Spanish is not applicable due to a zero Medieval row; Medieval values are reported descriptively and interpreted with caution given model limitations.
+Analysis shows a clear pilot signal of functional replacement, with synthetic Latin forms giving way to analytic auxiliaries in Early Spanish. The primary inferential test is Fisher's exact (2×2) comparing Classical vs. Early Spanish (p = 0.0001) and remains significant under Bonferroni adjustment (alpha_adj = 0.017). A 3×2 chi-square across Classical/Medieval/Spanish is not applicable due to a zero Medieval row; Medieval values are reported descriptively and interpreted with caution given model limitations.
 
 **Construction Inventories**:
 - Classical Latin: 6,182 synthetic constructions, 0 analytical constructions
@@ -129,12 +130,15 @@ Analysis revealed a complete structural transition from synthetic to analytical 
 - Early Spanish: 0 synthetic constructions, 22 analytical constructions
 
 
+
+Counts reflect only the predefined categories (future, perfect, passive, conditional). Spanish may exhibit other synthetic forms; we treat these as out‑of‑scope for this pilot inventory to maintain comparability.
+
 **Specific Spanish Analytical Patterns**:
 - Perfect aspect: *he/has/ha + past participle* (14 instances)
 - Passive voice: *es/son + past participle* (8 instances)
 - Future constructions: Analytical forms not detected in Early Spanish texts (later development)
 
-The complete absence of analytical constructions in Classical Latin and their systematic presence in Spanish provides compelling evidence for functional replacement rather than simple addition of complexity.
+The absence of analytical constructions in Classical Latin and their presence in Early Spanish provides a clear pilot signal of functional replacement rather than simple addition of complexity.
 
 ### 4.3 Dependency Complexity Evolution
 
@@ -167,7 +171,7 @@ Dependency depth did not differ across periods (Kruskal–Wallis p = 0.114, n=7/
 
 ## 5. Discussion
 
-### 5.1 Evidence for Complexity Conservation
+### 5.1 Signals Relevant to Complexity Conservation
 
 Our findings provide pilot signals consistent with complexity conservation during Latin-to-Spanish evolution. The data show patterns consistent with this hypothesis:
 
@@ -208,59 +212,8 @@ Future work:
 
 ## 6. Conclusions
 
-Given the extremely small sample sizes (n=4 for Spanish), these findings should be considered preliminary evidence requiring replication with larger corpora. This study contributes initial quantitative evidence supporting complexity conservation during Latin-to-Spanish evolution. Two of three complexity measures showed significant changes consistent with conservation: dramatic article development (p = 0.0007) and systematic analytical construction emergence (p = 0.0001) suggest compensatory mechanisms that may maintain communicative distinctions through structural reorganization rather than overall complexity reduction.
+Given the very small samples (n=7/5/4) and a Medieval modeling gap, this study provides pilot signals consistent with complexity redistribution during Latin→Spanish change. Two metrics show clear cross‑period differences (articles, analytical constructions), while dependency depth does not; together these results motivate a larger, genre‑controlled study with dedicated Medieval models. We release code and data to enable that next step and invite corpus contributions.
 
-These findings from Latin-Spanish evolution provide one data point supporting complexity conservation; replication across multiple language families is essential for theoretical validation. The methodology demonstrates computational approaches to testing theoretical hypotheses in historical linguistics, supporting functionalist approaches that emphasize cognitive and communicative pressures in language change.
-
-Future research should extend this approach to additional language families, incorporate multidimensional complexity measures, and develop specialized NLP tools for historical varieties. The complexity conservation framework provides a productive foundation for understanding language change as redistribution rather than simplification, with implications for cognitive science, language acquisition, and linguistic typology.
-
-
-## Appendix A. Sanity Checks and Validation
-
-### A.1 Article Counts: Regex vs. UD-Based Detection
-
-Objective: Cross-validate Spanish article rates using a simple regex approach against UD-based DET-tag detection used in the main analysis.
-
-Procedure:
-- Regex tokens counted as articles: 'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas', and contractions 'al', 'del' (excluding 'lo' to avoid pronoun inflation).
-- Normalization: counts per 1000 whitespace-tokenized words.
-- UD-based counts: Stanza DET-tag analysis with language-specific filtering (Spanish only).
-
-Table A.1. Spanish article rates: regex vs. UD-based (per 1000 words)
-
-| Text | Regex | UD-based |
-|------|-------|----------|
-| Auto de los Reyes Magos | 59.58 | 73.778 |
-| Cantar de mio Cid | 86.47 | 109.578 |
-| Berceo, Milagros | 107.50 | 121.764 |
-| Fuero de Peñafiel | 102.28 | 122.954 |
-
-Interpretation: Absolute values differ due to tokenization and historical orthography, but the qualitative pattern (Spanish >> Latin=0) is stable. UD-based results are reported in the paper; regex results serve as a sanity check confirming directionality.
-
-Reproducibility:
-- UD-based counts are produced by `display/latin-spanish-complexity/code/02_nlp_analysis.py` and summarized in `display/latin-spanish-complexity/data/processed/stanza_output.json` and `display/latin-spanish-complexity/results/tables/statistical_summary.csv`.
-
-### A.2 Analytical Constructions: Regex Cross-Checks
-
-Objective: Approximate the presence of analytic perfect and passive constructions in Early Spanish using regex, and compare with UD-based counts.
-
-Regex patterns (illustrative):
-- Perfect: (he|has|ha|hemos|han) + past participle (-ado|-ido)
-- Passive: (es|son|fue|fueron) + past participle (-ado|-ido)
-
-Results (Early Spanish total): regex ~12 perfect, ~11 passive (~23 combined); UD-based totals: 14 perfect, 8 passive (22 combined).
-
-### A.3 Dependency Complexity: Outlier and Distribution Notes
-
-Medieval Latin shows high variance with a documented outlier (Gregory of Tours; mean depth 18.38; max depth 98), while Classical and Early Spanish cluster around ~4–5. Kruskal–Wallis remains non-significant (p = 0.1140), so interpretations are cautious.
-
-### A.4 Medieval Latin Model Limitations
-
-The Stanza Latin model (ITTB-trained) underdetects transitional analytical forms in Medieval Latin, producing structural zeros. Inference is therefore restricted to Classical vs. Spanish for the categorical test.
-
-### A.5 Reproducibility Metadata
-
-With very small samples and a Medieval modeling gap, our results should be read as signals for a method, not as confirmation of complexity conservation. Two metrics show clear cross‑period differences, while dependency depth does not; taken together they motivate a larger, genre‑controlled study with dedicated Medieval Latin models. We release code and data to enable that next step and invite corpus contributions.
 
 ## Acknowledgments
 

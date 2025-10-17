@@ -35,3 +35,5 @@ Citation
 - If sharing this distribution alone, cite the source repo and this display bundle.
 - Consider minting a DOI (e.g., Zenodo) for the display-only repo release.
 
+
+Authoring notes: light wording edits were assisted by an LLM; all analyses and code are by the author.
