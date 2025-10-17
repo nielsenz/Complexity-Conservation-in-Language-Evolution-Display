@@ -2,7 +2,7 @@
 
 ## Abstract
 
-We present a pilot computational method to test whether grammatical complexity redistributes across subsystems during language change. We analyze 16 texts spanning Classical/Medieval Latin and Early Spanish (n=7/5/4) with Stanza-based pipelines and non‑parametric statistics. Two metrics vary strongly by period—Spanish article rates rise from 0 to approximately 107 per 1,000 words and analytic auxiliaries replace Latin synthetic forms—while dependency‑depth differences are not statistically significant (Kruskal–Wallis p=0.114). A known modeling limitation under‑detects Medieval Latin analytic forms, creating a discontinuity that precludes full evolutionary claims. We position our results as method validation rather than hypothesis confirmation, and we outline requirements for a definitive study (specialized Medieval models; >=20 texts/period; genre controls). Code and data are provided for replication.
+We present a pilot computational method to test whether grammatical complexity redistributes across subsystems during language change. We analyze 16 texts spanning Classical/Medieval Latin and Early Spanish (n=7/5/4) with Stanza-based pipelines and non‑parametric statistics (medians + BCa CIs). Two metrics vary strongly by period—Spanish article rates rise from 0 to approximately 107 per 1,000 words and analytic auxiliaries replace Latin synthetic forms—while dependency‑depth differences are not statistically significant (Kruskal–Wallis p=0.114). A known modeling limitation under‑detects Medieval Latin analytic forms, creating a discontinuity that precludes full evolutionary claims. We position our results as method validation rather than hypothesis confirmation, and we outline requirements for a definitive study (specialized Medieval models; $\geq 20$ texts/period; genre controls). Code and data are provided for replication.
 
 **Keywords**: historical linguistics, complexity redistribution, computational linguistics, Latin, Spanish, grammatical evolution
 
@@ -86,7 +86,7 @@ Given the historical nature of the data and necessarily small sample sizes typic
 - **Bootstrap confidence intervals** (n=1000) for robust uncertainty estimation
 - report medians with bootstrap BCa 95% CIs; effect sizes are not reported in this pilot due to small n and zero-variance cells
 
-Statistical significance was set at alpha = 0.05. Multiple comparisons were controlled with Bonferroni correction (alpha = 0.017); key findings remain significant after correction. Effect sizes were not calculated for comparisons where one group showed zero variance, as this yields undefined or infinite values. All analyses were conducted in Python using SciPy (version 1.9+).
+Statistical significance was set at $\alpha = 0.05$. Multiple comparisons were controlled with Bonferroni correction ($\alpha_{adj} = 0.017$); key findings remain significant after correction. Effect sizes were not calculated for comparisons where one group showed zero variance, as this yields undefined or infinite values. All analyses were conducted in Python using SciPy (version 1.9+).
 
 
 ### 3.4 Data & Models: Known Failure Modes
@@ -99,10 +99,10 @@ Stanza’s Latin model is trained primarily on Classical data and under‑detect
 
 Article development analysis revealed a dramatic structural transition across periods (Kruskal-Wallis H = 14.619, p = 0.0007), consistent with Spanish developing an article system to replace Latin case distinctions.
 
-**Period Comparisons** (rates per 1000 words):
-- Classical Latin: mean = 0.000, SD = 0.000, 95% CI: [0.000, 0.000], n = 7
-- Medieval Latin: mean = 0.000, SD = 0.000, 95% CI: [0.000, 0.000], n = 5  
-- Early Spanish: mean = 107.018, SD = 22.970, 95% CI: [85.774, 122.359], n = 4
+**Summary** (median per 1000 words, IQR; BCa 95% CI; n):
+- Classical Latin: median 0.000 (IQR 0.000); CI [0.000, 0.000]; n = 7
+- Medieval Latin: median 0.000 (IQR 0.000); CI [0.000, 0.000]; n = 5
+- Early Spanish: median 115.7 (IQR 30.7); CI [85.774, 122.359]; n = 4
 
 **Individual Spanish Text Rates**:
 - Auto de los Reyes Magos: 73.778 per 1000 words
@@ -116,13 +116,22 @@ The increasing article rates from earlier to later Spanish texts (73.8 to 123.0 
 - Classical vs. Medieval Latin: Mann-Whitney U = 17.500, p = 1.0000 (no difference - both lack articles)
 - Medieval Latin vs. Spanish: Mann-Whitney U = 0.000, p = 0.0108 (maximal difference between groups)
 - Classical Latin vs. Spanish: Mann-Whitney U = 0.000, p = 0.0031 (maximal difference between groups)
-Under Bonferroni adjustment for three pairwise tests (alpha_adj = 0.017), Classical vs Spanish (p = 0.0031; p_adj = 0.0093) and Medieval vs Spanish (p = 0.0108; p_adj = 0.0324) both remain significant.
+Under Bonferroni adjustment for three pairwise tests ($\alpha_{adj} = 0.017$), Classical vs Spanish remains significant (p = 0.0031; p_adj = 0.0093), while Medieval vs Spanish does not (p = 0.0108; p_adj = 0.0324).
 
 The pattern shows complete absence of articles in both Latin periods, followed by systematic article development in Spanish. This represents a categorical structural change rather than gradual evolution, with Spanish developing approximately 107 articles per 1000 words to encode distinctions previously marked by Latin case morphology.
 
 ### 4.2 Analytical Construction Shift
 
-Analysis shows a clear pilot signal of functional replacement, with synthetic Latin forms giving way to analytic auxiliaries in Early Spanish. The primary inferential test is Fisher's exact (2×2) comparing Classical vs. Early Spanish (p = 0.0001) and remains significant under Bonferroni adjustment (alpha_adj = 0.017). A 3×2 chi-square across Classical/Medieval/Spanish is not applicable due to a zero Medieval row; Medieval values are reported descriptively and interpreted with caution given model limitations.
+Analysis shows a clear pilot signal of functional replacement, with synthetic Latin forms giving way to analytic auxiliaries in Early Spanish. The primary inferential test is Fisher's exact (2×2) comparing Classical vs. Early Spanish (p = 0.0001) and remains significant under Bonferroni adjustment ($\alpha_{adj} = 0.017$). A 3×2 chi-square across Classical/Medieval/Spanish is not applicable due to a zero Medieval row; Medieval values are reported descriptively and interpreted with caution given model limitations.
+
+
+2×2 counts used for Fisher's exact:
+
+| Period | Synthetic | Analytical |
+|--------|-----------|------------|
+| Classical Latin | 6,182 | 0 |
+| Early Spanish | 0 | 22 |
+
 
 **Construction Inventories**:
 - Classical Latin: 6,182 synthetic constructions, 0 analytical constructions
@@ -150,11 +159,11 @@ Dependency complexity analysis revealed compensatory patterns during transitiona
 - Early Spanish: mean = 4.516 depth, SD = 1.070, 95% CI: [3.339, 5.591], n = 4
 
 **Pairwise Comparisons**:
-- Classical vs. Medieval: Mann-Whitney U = 7.000, p = 0.1061, Cohen's d = -1.276
-- Medieval vs. Spanish: Mann-Whitney U = 16.000, p = 0.1905, Cohen's d = 0.932
-- Classical vs. Spanish: Mann-Whitney U = 7.000, p = 0.2303, Cohen's d = -0.719
+- Classical vs. Medieval: Mann-Whitney U = 7.000, p = 0.1061
+- Medieval vs. Spanish: Mann-Whitney U = 16.000, p = 0.1905
+- Classical vs. Spanish: Mann-Whitney U = 7.000, p = 0.2303
 
-Dependency depth did not differ across periods (Kruskal–Wallis p = 0.114, n=7/5/4). We therefore refrain from further interpretation and treat these results as a power baseline for a larger study.
+Dependency depth did not differ across periods (Kruskal–Wallis p = 0.114, n = 7/5/4; robust check in A.3 unchanged).
 
 ### 4.4 Individual Text Analysis
 
@@ -203,11 +212,11 @@ This study demonstrates computational methods for testing complexity conservatio
 
 ### 5.4 Limitations and Future Directions
 
-This is a pilot with very small samples per period (n=7/5/4), so all inferences are power‑limited. Stanza’s Latin model, trained on Classical data, under‑detects transitional Medieval analytic forms; as a result, we restrict inferential tests of analytic shift to Classical vs. Early Spanish and treat Medieval counts descriptively. Genre/register imbalances may confound period contrasts; future work will add genre‑matched subsets and >=20 texts per period.
+This is a pilot with very small samples per period (n=7/5/4), so all inferences are power‑limited. Stanza’s Latin model, trained on Classical data, under‑detects transitional Medieval analytic forms; as a result, we restrict inferential tests of analytic shift to Classical vs. Early Spanish and treat Medieval counts descriptively. Genre/register imbalances may confound period contrasts; future work will add genre‑matched subsets and $\geq 20$ texts per period.
 
 Future work:
 - Specialized Medieval Latin tagger/lemmatizer; evaluate on held‑out medieval gold.
-- Corpus expansion to >=20 texts/period with genre controls; preregister dependency metrics.
+- Corpus expansion to $\geq 20$ texts/period with genre controls; preregister dependency metrics.
 - Add morphosyntactic complexity indices beyond depth (argument optionality, subordination rates, information‑theoretic syntax surprisal).
 
 ## 6. Conclusions
